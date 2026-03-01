@@ -1,2 +1,7 @@
 [2026-03-01T16:34:38.661666Z] === Autocommit Starting ===
 [2026-03-01T16:36:01.377956Z] === Autocommit Starting ===
+  File "/home/sntrblck/.openclaw/workspace/autocommit.py", line 93
+    if not GITIGNORE.exists():
+IndentationError: unexpected indent
+[2026-03-01T16:37:47.284739Z] === Autocommit Starting ===
+[2026-03-01T16:37:47.284739Z] === Autocommit Starting ===

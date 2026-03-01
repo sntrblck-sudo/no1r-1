@@ -1,0 +1,13 @@
+# Temp
+*.log
+*.log.*
+*.pyc
+__pycache__/
+
+# State
+*_state.json
+.model-health-state.json
+
+# OpenClaw
+.openclaw/
+node_modules/

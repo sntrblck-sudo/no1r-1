@@ -83,13 +83,16 @@ def main():
     code, _, _ = run("git rev-parse --git-dir")
     if code != 0:
         run("git init")
-        run("git config user.email 'no1r@openclaw.local'")
-        run("git config user.name 'no1r'")
-        
-        # Create .gitignore
-        if not GITIGNORE.exists():
-            with open(GITIGNORE, "w") as f:
-                f.write("""# Temp
+        log("Initialized git repo")
+    
+    # Always set config (in case init wasn't needed)
+    run("git config user.email 'no1r@openclaw.local'")
+    run("git config user.name 'no1r'")
+    
+    # Create .gitignore if missing
+    if not GITIGNORE.exists():
+        with open(GITIGNORE, "w") as f:
+            f.write("""# Temp
 *.log
 *.log.*
 *.pyc
@@ -103,11 +106,6 @@ __pycache__/
 .openclaw/
 node_modules/
 """)
-        
-        # Initial commit
-        run("git add .")
-        run('git commit -m "Initial commit"')
-        log("Initialized git repo")
     
     commits_today = 0
     
