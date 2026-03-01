@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/sntrblck/.openclaw/workspace
+User=sntrblck
 ExecStart=/usr/bin/python3 /home/sntrblck/.openclaw/workspace/autocommit.py
 Restart=on-failure
 RestartSec=30
