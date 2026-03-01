@@ -20,6 +20,14 @@ MAX_CONSECUTIVE_FAILURES = 10  # Give up after this many
 MAX_MEMORY_MB = 500  # Restart if Sentinel uses > 500MB
 MIN_DISK_SPACE_MB = 100  # Alert if < 100MB free
 
+# Graceful shutdown
+import signal
+def signal_handler(signum, frame):
+    log(f"Received {signum}, exiting...")
+    sys.exit(0)
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+
 
 def log(msg):
     timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
