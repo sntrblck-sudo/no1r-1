@@ -551,9 +551,10 @@ def record_latency(state, latency):
     if stats["samples"]:
         stats["avg"] = sum(stats["samples"]) / len(stats["samples"])
         
-        # Learn spike threshold: if latency > 2x avg, that's a spike
+        # Learn spike threshold: if latency > 4x avg AND > 200ms, that's a spike
+        # Much less sensitive - only major issues trigger alerts
         if stats["avg"] > 0:
-            stats["spike_threshold"] = stats["avg"] * 2
+            stats["spike_threshold"] = max(200, stats["avg"] * 4)
     
     return state
 

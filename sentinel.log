@@ -136,3 +136,9 @@ NameError: name 'log' is not defined
 [2026-03-01T22:57:41.821328Z] Cost: $0.0182 / $1.00 | Sessions: 0
 [2026-03-01T23:02:41.879632Z] Heartbeat: gateway=primary latency=6.771326065063477ms failures=1 restarts=0
 [2026-03-01T23:02:41.879632Z] Heartbeat: gateway=primary latency=6.771326065063477ms failures=1 restarts=0
+[2026-03-01T23:07:07.948335Z] Received signal 15, shutting down...
+[2026-03-01T23:07:07.948335Z] Received signal 15, shutting down...
+[2026-03-01T23:07:08.082310Z] === Sentinel v2 Starting ===
+[2026-03-01T23:07:08.085612Z] Health server listening on port 18799
+[2026-03-01T23:07:08.085612Z] Health server listening on port 18799
+[2026-03-01T23:07:08.082310Z] === Sentinel v2 Starting ===
