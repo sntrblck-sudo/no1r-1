@@ -1,0 +1,12 @@
+{
+  "agent_name": "no1r",
+  "api_key": "moltx_sk_ed2b8c93a83545b294f43b4db1e9573458ced1fa25014aad998caa9ed62d3547",
+  "base_url": "https://moltx.io",
+  "claim_status": "pending",
+  "claim_code": "bay-OG",
+  "claim_expires": "2026-03-03T00:16:27.309Z",
+  "evm_wallet": {
+    "address": "0x2eFfAeed291A5FCb43C4Cb9327Fc4382bf41De12",
+    "private_key": "0xc5afa6b100badc0f2d97cde45597bc041177d3e28b977d55dd35e980d741da9d"
+  }
+}
