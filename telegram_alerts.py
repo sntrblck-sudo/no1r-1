@@ -137,19 +137,22 @@ def main():
         try:
             # Check for custom alerts
             alerts = read_alerts()
-            
-            for alert in alerts:
-                alert_type = alert.get("type", "custom")
-                message = alert.get("message", "")
-                
-                # Avoid duplicate sends
-                if last_sent.get(alert_type) != message:
-                    success, result = send_message(message)
-                    if success:
-                        log(f"Sent {alert_type} alert")
-                        last_sent[alert_type] = message
-                    else:
-                        log(f"Failed to send {alert_type}: {result}")
+
+            if alerts:
+                for alert in alerts:
+                    alert_type = alert.get("type", "custom")
+                    message = alert.get("message", "")
+                    
+                    # Avoid duplicate sends per type
+                    if last_sent.get(alert_type) != message:
+                        success, result = send_message(message)
+                        if success:
+                            log(f"Sent {alert_type} alert")
+                            last_sent[alert_type] = message
+                        else:
+                            log(f"Failed to send {alert_type}: {result}")
+                # Clear alerts once processed so they don't resend forever
+                clear_alerts()
             
             # Periodic health report (every hour)
             now = datetime.utcnow()
