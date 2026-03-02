@@ -2,8 +2,8 @@
   "started": "2026-03-02T08:45:39.770490Z",
   "pid": 15481,
   "restarts": 0,
-  "failures": 7,
-  "last_learning_update": "2026-03-02T08:51:28.825181Z",
+  "failures": 9,
+  "last_learning_update": "2026-03-02T08:56:53.364023Z",
   "method_preferences": {
     "heal_gateway": {
       "restart_daemon": {
@@ -12,11 +12,11 @@
       },
       "restart_service": {
         "success": 0,
-        "total": 6
+        "total": 8
       },
       "kill_gateway": {
         "success": 0,
-        "total": 4
+        "total": 6
       }
     }
   },
@@ -40,7 +40,6 @@
   },
   "latency_stats": {
     "samples": [
-      4.544734954833984,
       11.972665786743164,
       2.9408931732177734,
       3.387928009033203,
@@ -89,9 +88,10 @@
       3.0553340911865234,
       4.363536834716797,
       2.41851806640625,
-      7.808685302734375
+      7.808685302734375,
+      11.968374252319336
     ],
     "spike_threshold": 200,
-    "avg": 6.117191314697266
+    "avg": 6.265664100646973
   }
 }
