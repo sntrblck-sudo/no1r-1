@@ -350,3 +350,7 @@ See system logs and 'systemctl status openclaw-gateway.service' for details.
 [2026-03-02T12:04:17.202515Z] Health server listening on port 18799
 [2026-03-02T12:04:17.216063Z] Gateway healthy again, resetting failures (was 9)
 [2026-03-02T12:04:17.216063Z] Gateway healthy again, resetting failures (was 9)
+[2026-03-02T12:59:17.566964Z] Alive: loop 12
+[2026-03-02T12:59:17.566964Z] Alive: loop 12
+[2026-03-02T12:59:17.597276Z] Cost: $0.0182 / $1.00 | Sessions: 0
+[2026-03-02T12:59:17.597276Z] Cost: $0.0182 / $1.00 | Sessions: 0
