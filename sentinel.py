@@ -658,7 +658,7 @@ def heal_gateway(state):
     
     # Try preferred method first
     preferred = get_preferred_method(state, action)
-    methods = ["restart_daemon", "restart_service"]
+    methods = ["kill_gateway", "restart_service"]
     
     if preferred:
         methods.remove(preferred)
@@ -668,18 +668,21 @@ def heal_gateway(state):
         log(f"Attempting heal via {method}...")
         success = False
         
-        if method == "restart_daemon":
+        if method == "kill_gateway":
             try:
-                subprocess.run(["openclaw", "gateway", "restart"], timeout=30)
+                # Find and kill gateway process, then restart via systemd
+                os.system("pkill -f 'openclaw-gateway'")
+                time.sleep(2)
+                os.system("systemctl start openclaw-gateway")
                 time.sleep(5)
                 ok, _, _ = check_gateway_health()
                 success = ok
             except Exception as e:
-                log(f"restart_daemon failed: {e}")
+                log(f"kill_gateway failed: {e}")
         
         elif method == "restart_service":
             try:
-                subprocess.run(["systemctl", "restart", "openclaw-gateway"], timeout=30)
+                os.system("systemctl restart openclaw-gateway")
                 time.sleep(5)
                 ok, _, _ = check_gateway_health()
                 success = ok
