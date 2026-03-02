@@ -221,6 +221,9 @@ def load_state():
             "alert_pct": 50,
             "proactive_restart_failures": 3,
         },
+        # Heal behaviour flags
+        "heal_permission_blocked": False,
+        "last_heal_alert": None,
     }
 
 
@@ -710,9 +713,10 @@ def heal_gateway(state):
     state["failures"] += 1
 
     if permission_blocked:
-        log("Heal failed due to permission issues with systemctl; marking for manual intervention")
+        log("Heal failed due to permission issues with systemctl; disabling further heal attempts until manual reset")
+        state["heal_permission_blocked"] = True
         queue_alert(
-            "⚠️ Sentinel could not restart openclaw-gateway due to permission requirements. Manual intervention needed.",
+            "⚠️ Sentinel could not restart openclaw-gateway due to permission requirements. Heal attempts disabled until manual intervention.",
             "health",
         )
 
@@ -855,11 +859,30 @@ def main():
                 log(f"Cost: ${today_cost:.4f} / ${state.get('cost_threshold', MAX_COST_PER_DAY):.2f} | Sessions: {active_sessions}")
             
             if not ok:
-                log(f"Gateway unhealthy, attempting heal...")
-                state, healed = heal_gateway(state)
-                if not healed:
-                    log("WARNING: Heal failed, will retry next cycle")
-                    queue_alert("⚠️ Gateway heal failed - manual intervention may be needed", "health")
+                # Gateway unhealthy
+                if state.get("heal_permission_blocked"):
+                    # We already know heals are blocked by permissions; avoid spamming alerts
+                    log("Gateway unhealthy, but heal is permission-blocked; skipping heal attempts")
+                else:
+                    log(f"Gateway unhealthy, attempting heal...")
+                    state, healed = heal_gateway(state)
+                    if not healed:
+                        # Throttle heal-failed alerts to at most once per hour
+                        now_iso = datetime.utcnow().isoformat() + "Z"
+                        last_alert = state.get("last_heal_alert")
+                        should_alert = True
+                        if last_alert:
+                            try:
+                                last_dt = datetime.fromisoformat(last_alert.replace("Z", "+00:00"))
+                                if datetime.utcnow() - last_dt < timedelta(hours=1):
+                                    should_alert = False
+                            except Exception:
+                                # On parse error, treat as needing alert
+                                should_alert = True
+                        if should_alert:
+                            log("WARNING: Heal failed, will retry next cycle")
+                            queue_alert("⚠️ Gateway heal failed - manual intervention may be needed", "health")
+                            state["last_heal_alert"] = now_iso
             
             # Hourly heartbeat
             if now - last_heartbeat > timedelta(hours=1):
