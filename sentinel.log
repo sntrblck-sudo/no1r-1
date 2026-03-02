@@ -324,3 +324,7 @@ See system logs and 'systemctl status openclaw-gateway.service' for details.
 [2026-03-02T08:56:53.363847Z] Alt gateway also failed
 [2026-03-02T08:56:53.364032Z] WARNING: Heal failed, will retry next cycle
 [2026-03-02T08:56:53.364032Z] WARNING: Heal failed, will retry next cycle
+[2026-03-02T09:41:53.622136Z] Alive: loop 12
+[2026-03-02T09:41:53.622136Z] Alive: loop 12
+[2026-03-02T09:41:53.682738Z] Cost: $0.0182 / $1.00 | Sessions: 0
+[2026-03-02T09:41:53.682738Z] Cost: $0.0182 / $1.00 | Sessions: 0
