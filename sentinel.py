@@ -653,50 +653,69 @@ def get_learned_threshold(state, threshold_name, default):
 
 
 def heal_gateway(state):
-    """Attempt to restart gateway"""
+    """Attempt to restart gateway in a permission-aware way"""
     action = "heal_gateway"
-    
+
     # Try preferred method first
     preferred = get_preferred_method(state, action)
     methods = ["kill_gateway", "restart_service"]
-    
-    if preferred:
+
+    if preferred in methods:
         methods.remove(preferred)
         methods.insert(0, preferred)
-    
+
+    permission_blocked = False
+
     for method in methods:
         log(f"Attempting heal via {method}...")
         success = False
-        
+
         if method == "kill_gateway":
             try:
                 # Find and kill gateway process, then restart via systemd
-                os.system("pkill -f 'openclaw-gateway'")
+                rc_kill = os.system("pkill -f 'openclaw-gateway'")
                 time.sleep(2)
-                os.system("systemctl start openclaw-gateway")
+                rc_start = os.system("systemctl start openclaw-gateway")
                 time.sleep(5)
                 ok, _, _ = check_gateway_health()
                 success = ok
+
+                # Detect permission issues from systemctl
+                if rc_start != 0:
+                    permission_blocked = True
             except Exception as e:
                 log(f"kill_gateway failed: {e}")
-        
+
         elif method == "restart_service":
             try:
-                os.system("systemctl restart openclaw-gateway")
+                rc_restart = os.system("systemctl restart openclaw-gateway")
                 time.sleep(5)
                 ok, _, _ = check_gateway_health()
                 success = ok
+
+                # Detect permission issues from systemctl
+                if rc_restart != 0:
+                    permission_blocked = True
             except Exception as e:
                 log(f"restart_service failed: {e}")
-        
+
         state = record_outcome(state, action, method, success)
-        
+
         if success:
             log(f"Heal succeeded via {method}")
             state["restarts"] += 1
             return state, True
-    
+
+    # If we got here, all methods failed
     state["failures"] += 1
+
+    if permission_blocked:
+        log("Heal failed due to permission issues with systemctl; marking for manual intervention")
+        queue_alert(
+            "⚠️ Sentinel could not restart openclaw-gateway due to permission requirements. Manual intervention needed.",
+            "health",
+        )
+
     return state, False
 
 
@@ -753,6 +772,19 @@ def heartbeat(state):
 def main():
     log("=== Sentinel v2 Starting ===")
     state = load_state()
+
+    # Singleton guard: if a previous Sentinel PID is still running, exit
+    prev_pid = state.get("pid")
+    if prev_pid and prev_pid != os.getpid():
+        try:
+            os.kill(prev_pid, 0)  # Check if process exists
+        except OSError:
+            # Old PID is dead, safe to continue
+            pass
+        else:
+            log(f"Existing Sentinel instance detected (pid={prev_pid}), exiting")
+            return
+
     state["pid"] = os.getpid()
     state["started"] = datetime.utcnow().isoformat() + "Z"
     save_state(state)
