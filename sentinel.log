@@ -526,3 +526,9 @@ See system logs and 'systemctl status openclaw-gateway.service' for details.
 [2026-03-03T16:03:58.669334Z] Running daily learning update...
 [2026-03-03T16:03:58.669451Z] Lowered cost threshold to $0.90
 [2026-03-03T16:03:58.669451Z] Lowered cost threshold to $0.90
+[2026-03-03T16:58:59.007332Z] Alive: loop 300
+[2026-03-03T16:58:59.007332Z] Alive: loop 300
+[2026-03-03T16:58:59.044017Z] Cost: $0.0182 / $0.90 | Sessions: 0
+[2026-03-03T16:58:59.044017Z] Cost: $0.0182 / $0.90 | Sessions: 0
+[2026-03-03T17:03:59.133574Z] Heartbeat: gateway=primary latency=2.423524856567383ms failures=0 restarts=0
+[2026-03-03T17:03:59.133574Z] Heartbeat: gateway=primary latency=2.423524856567383ms failures=0 restarts=0
