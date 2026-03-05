@@ -788,3 +788,9 @@ See system logs and 'systemctl status openclaw-gateway.service' for details.
 [2026-03-05T10:59:18.580868Z] Cost: $0.0182 / $0.81 | Sessions: 0
 [2026-03-05T11:04:18.681605Z] Heartbeat: gateway=primary latency=21.63219451904297ms failures=0 restarts=0
 [2026-03-05T11:04:18.681605Z] Heartbeat: gateway=primary latency=21.63219451904297ms failures=0 restarts=0
+[2026-03-05T11:59:19.029040Z] Alive: loop 816
+[2026-03-05T11:59:19.029040Z] Alive: loop 816
+[2026-03-05T11:59:19.060117Z] Cost: $0.0182 / $0.81 | Sessions: 0
+[2026-03-05T11:59:19.060117Z] Cost: $0.0182 / $0.81 | Sessions: 0
+[2026-03-05T12:04:19.132477Z] Heartbeat: gateway=primary latency=3.9124488830566406ms failures=0 restarts=0
+[2026-03-05T12:04:19.132477Z] Heartbeat: gateway=primary latency=3.9124488830566406ms failures=0 restarts=0
