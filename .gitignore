@@ -7,7 +7,15 @@ __pycache__/
 # State
 *_state.json
 .model-health-state.json
+base_wallet_state.json
+ops_state.json
+judgements.jsonl
 
 # OpenClaw
 .openclaw/
 node_modules/
+
+# Agent metrics (to be created)
+events.jsonl
+posts.jsonl
+
