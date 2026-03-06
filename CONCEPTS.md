@@ -6,7 +6,27 @@ Short, reusable ideas and patterns we care about keeping.
 
 ---
 
-## Gateway & Sentinel
+## Gateway, Sentinel & Cron
+
+**G1. Boring is success**  
+If `gateway=ok` and `sentinel=ok` in `ops_state.json` over days, prefer observation over change. Don’t "improve" a stable system without evidence.
+
+**G2. Heal vs. Permission**  
+When systemd denies restarts (`Interactive authentication required`), treat it as a **permission boundary**, not a transient error. Stop repeated heals, mark `heal_permission_blocked`, and surface a single clear alert.
+
+**G3. Reset on true recovery**  
+When the gateway is healthy again, reset `failures` and stale heal alerts. Don’t keep reporting old failures once the system is stable.
+
+**G4. Cron hygiene**  
+For cron jobs:
+- Prefer `--session isolated` for non-trivial tasks (fresh context, no main-session bloat).
+- Always set `--tz` explicitly; do not rely on host timezone.
+- Avoid high-frequency intervals (<5 minutes). For sub-minute, use seconds-cron only for very simple checks.
+- Use `delivery.bestEffort: true` for channel/webhook delivery to prevent silent failures.
+- Use `--exact` for top-of-hour jobs that must not stagger.
+
+---
+
 
 **G1. Boring is success**  
 If `gateway=ok` and `sentinel=ok` in `ops_state.json` over days, prefer observation over change. Don’t "improve" a stable system without evidence.
