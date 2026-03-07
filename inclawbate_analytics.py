@@ -5,7 +5,7 @@ Read-only integration with Inclawbate analytics.
 
 - Calls the public analytics endpoint
 - Stores the JSON snapshot locally
-- Prints a brief human-readable summary
+- Updates a short markdown summary for humans
 
 Scope: analytics ONLY. No staking/unstaking or protocol actions.
 """
@@ -20,6 +20,7 @@ import urllib.error
 
 WORKSPACE = Path("/home/sntrblck/.openclaw/workspace")
 OUT_FILE = WORKSPACE / "inclawbate_state.json"
+SUMMARY_FILE = WORKSPACE / "inclawbate_summary.md"
 
 API_URL = "https://www.inclawbate.com/api/inclawbate/analytics"
 
@@ -43,7 +44,7 @@ def fetch_analytics() -> dict:
 
 
 def summarize(data: dict) -> str:
-    # This depends on the exact schema; we keep it defensive.
+    """Return a short human-readable summary string."""
     ts = datetime.utcnow().isoformat() + "Z"
     summary_lines = [f"Inclawbate analytics snapshot @ {ts}"]
 
@@ -65,6 +66,11 @@ def summarize(data: dict) -> str:
     return "\n".join(summary_lines)
 
 
+def write_summary_md(summary: str) -> None:
+    """Write or overwrite a small markdown summary file for ops reports."""
+    SUMMARY_FILE.write_text(summary + "\n")
+
+
 def main() -> None:
     try:
         data = fetch_analytics()
@@ -78,7 +84,10 @@ def main() -> None:
     }
     OUT_FILE.write_text(json.dumps(snapshot, indent=2))
 
-    print(summarize(data))
+    summary = summarize(data)
+    write_summary_md(summary)
+
+    print(summary)
 
 
 if __name__ == "__main__":
