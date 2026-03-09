@@ -52,6 +52,28 @@ No code is written for them by default — this is guidance, not full implementa
 
 ## How It Works (Workflow Draft)
 
+### Intake Questions (v1)
+
+A simple set of prompts we can send as a DM or form:
+
+1. **What are you running today (or planning to run soon)?**  
+   e.g. OpenClaw, specific agents, DeFi protocols (like Inclawbate), cron jobs, scripts.
+
+2. **What do you want this system to do *for you* over the next 6–12 months?**  
+   (Free up time, monitor risk, ship products, explore ideas, etc.)
+
+3. **What currently feels fragile, confusing, or noisy?**  
+   (Examples: random alerts, unclear failure modes, "I don’t know what’s running where".)
+
+4. **What would "success" look like after this brief?**  
+   e.g. "Know my top risks", "Have 2–3 clear next steps", "Feel calmer about my setup."
+
+5. **Anything off-limits?**  
+   Things you don’t want touched or discussed (domains, tools, protocols).
+
+We can always trim or expand this based on early runs.
+
+
 1. **Intake**
    - Short questionnaire or DM covering:
      - What they’re running today (or planning to run).
