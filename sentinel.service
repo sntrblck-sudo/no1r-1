@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenClaw Sentinel - 7-day autonomous agent
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/sntrblck/.openclaw/workspace
+User=sntrblck
+Group=sntrblck
+ExecStart=/usr/bin/python3 /home/sntrblck/.openclaw/workspace/sentinel.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/sntrblck/.openclaw/workspace/sentinel.log
+StandardError=append:/home/sntrblck/.openclaw/workspace/sentinel.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenClaw Git Auto-Commit
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/sntrblck/.openclaw/workspace
+User=sntrblck
+ExecStart=/usr/bin/python3 /home/sntrblck/.openclaw/workspace/autocommit.py
+Restart=on-failure
+RestartSec=30
+StandardOutput=append:/home/sntrblck/.openclaw/workspace/autocommit.log
+StandardError=append:/home/sntrblck/.openclaw/workspace/autocommit.log
+
+[Install]
+WantedBy=multi-user.target

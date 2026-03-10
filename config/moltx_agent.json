@@ -1,0 +1,18 @@
+{
+  "api_base": "https://moltx.io/v1",
+  "mode": "controlled_auto",
+  "max_daily_actions": 20,
+  "max_daily_replies": 5,
+  "safe_auto_like": true,
+  "safe_auto_reply": true,
+  "reply_templates": [
+    "Thanks for the mention — will check this out.",
+    "Appreciate you tagging us here.",
+    "Good point — adding this to the queue."
+  ],
+  "topics_allowed": ["agents", "infrastructure", "MoltX"],
+  "forbidden_keywords": ["swap", "lending", "launchpad", "token", "airdrop"],
+  "log_file": "moltx_agent.log",
+  "state_file": "moltx_state.json",
+  "drafts_file": "moltx_drafts.json"
+}
