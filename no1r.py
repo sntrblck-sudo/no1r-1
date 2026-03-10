@@ -57,11 +57,17 @@ def run_patterns_mirror() -> None:
     _run_script("patterns_mirror.py")
 
 
+def run_finance_simulation() -> None:
+    log("Running finance_simulation.py (simulation only)", scope="finance")
+    _run_script("finance_simulation.py")
+
+
 ACTIONS = {
     "inclawbate-analytics": run_inclawbate_analytics,
     "attention-tension": run_attention_tension,
     "ops-inbox": run_ops_inbox,
     "patterns-mirror": run_patterns_mirror,
+    "finance-sim": run_finance_simulation,
 }
 
 
