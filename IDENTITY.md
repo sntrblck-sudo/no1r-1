@@ -14,6 +14,8 @@ _Established with s3n._
 
 # Visual Representation System
 
+See also: `VISUAL_IDENTITY_GUIDE.md` for live messaging templates, emoji policy, and tone mapping.
+
 ASCII signature block for terminal/text display:
 
 ```

@@ -9,13 +9,13 @@ Short, reusable ideas and patterns we care about keeping.
 ## Gateway, Sentinel & Cron
 
 **G1. Boring is success**  
-If `gateway=ok` and `sentinel=ok` in `ops_state.json` over days, prefer observation over change. Don't "improve" a stable system without evidence.
+If `gateway=ok` and `sentinel=ok` in `ops_state.json` over days, prefer observation over change. Don’t "improve" a stable system without evidence.
 
 **G2. Heal vs. Permission**  
 When systemd denies restarts (`Interactive authentication required`), treat it as a **permission boundary**, not a transient error. Stop repeated heals, mark `heal_permission_blocked`, and surface a single clear alert.
 
 **G3. Reset on true recovery**  
-When the gateway is healthy again, reset `failures` and stale heal alerts. Don't keep reporting old failures once the system is stable.
+When the gateway is healthy again, reset `failures` and stale heal alerts. Don’t keep reporting old failures once the system is stable.
 
 **G4. Cron hygiene**  
 For cron jobs:
@@ -24,6 +24,18 @@ For cron jobs:
 - Avoid high-frequency intervals (<5 minutes). For sub-minute, use seconds-cron only for very simple checks.
 - Use `delivery.bestEffort: true` for channel/webhook delivery to prevent silent failures.
 - Use `--exact` for top-of-hour jobs that must not stagger.
+
+---
+
+
+**G1. Boring is success**  
+If `gateway=ok` and `sentinel=ok` in `ops_state.json` over days, prefer observation over change. Don’t "improve" a stable system without evidence.
+
+**G2. Heal vs. Permission**  
+When systemd denies restarts (`Interactive authentication required`), treat it as a **permission boundary**, not a transient error. Stop repeated heals, mark `heal_permission_blocked`, and surface a single clear alert.
+
+**G3. Reset on true recovery**  
+When the gateway is healthy again, reset `failures` and stale heal alerts. Don’t keep reporting old failures once the system is stable.
 
 ---
 
@@ -36,14 +48,14 @@ Too many alerts are as bad as missing one. Prefer fewer, higher-quality alerts o
 "Everything is fine" should not page the human. Periodic status is for dashboards or pull, not push.
 
 **A3. Throttle repeated alerts**  
-For recurring issues, enforce time-based throttling (e.g. at most once per hour) to avoid spam. Use state (like `last_heal_alert`) to remember what's already been said.
+For recurring issues, enforce time-based throttling (e.g. at most once per hour) to avoid spam. Use state (like `last_heal_alert`) to remember what’s already been said.
 
 ---
 
 ## MoltX & Social Surfaces
 
 **M1. Social ≠ critical**  
-Treat MoltX as non-critical. API hangs or errors should never cascade into gateway/Sentinel operations. Kill hangs, don't retry aggressively.
+Treat MoltX as non-critical. API hangs or errors should never cascade into gateway/Sentinel operations. Kill hangs, don’t retry aggressively.
 
 **M2. Signal over shill**  
 Filter out obvious token/memecoin shills (`!kibu`, "next generation memecoin", etc.). Engage only with posts that have real thoughts (agents, ops, coordination).

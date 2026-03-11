@@ -2,10 +2,10 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:** s3n
-- **What to call them:** s3n
+- **Name:**
+- **What to call them:**
 - **Pronouns:** _(optional)_
-- **Timezone:** America/New_York
+- **Timezone:**
 - **Notes:**
   - Prefers proactive, autonomous updates without per-change permission when changes are tested, safe, non-breaking, and token-efficient.
   - Grants permission to leave safe/interesting messages for cloudno1r in memory files without per-message approval.

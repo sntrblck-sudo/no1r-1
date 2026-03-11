@@ -1,0 +1,20 @@
+/home/thera/.openclaw/workspace/sentinel.py:107: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  timestamp = datetime.utcnow().isoformat() + "Z"
+[2026-03-11T23:56:05.493679Z] Health server listening on port 18799
+[2026-03-11T23:56:05.493709Z] === Sentinel v2 Starting ===
+/home/thera/.openclaw/workspace/sentinel.py:793: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  state["started"] = datetime.utcnow().isoformat() + "Z"
+/home/thera/.openclaw/workspace/sentinel.py:796: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  last_heartbeat = datetime.utcnow()
+/home/thera/.openclaw/workspace/sentinel.py:797: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  last_daily = datetime.utcnow()
+/home/thera/.openclaw/workspace/sentinel.py:798: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  last_learning = datetime.utcnow()
+/home/thera/.openclaw/workspace/sentinel.py:810: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+/home/thera/.openclaw/workspace/sentinel.py:542: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  _latency_history.append({"latency": latency, "timestamp": datetime.utcnow().isoformat()})
+/home/thera/.openclaw/workspace/sentinel.py:447: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+/home/thera/.openclaw/workspace/sentinel.py:427: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  today = datetime.utcnow().isoformat()[:10]

@@ -1,0 +1,184 @@
+OPS LOG DIGEST SIMULATION SPEC v0.1 (for no1r-pc + Llama 3.1)
+
+ROLE
+- This body = no1r-pc, worker / analyst.
+- Main no1r = governance / decision / human interface.
+- This simulation is analysis-only: no external actions, no config changes, no real money.
+
+GOAL
+Summarize local operational logs and detect anomalies or tensions in system behavior, to improve stability and survivability.
+Outputs are structured simulations for main no1r to review.
+
+SCOPE & CONSTRAINTS
+- Local-only inputs (files/process output).
+- No network calls.
+- No edits to config/services.
+- Output = structured report file(s) only.
+- Recommendations are advisory, never actions.
+
+INPUTS (LOCAL FILES / COMMAND SNAPSHOTS)
+On pc, treat these as the primary sources (adjust paths if needed):
+
+- sentinel.log
+- sentinel_state.json
+- events.jsonl (task/events log if present)
+- ops_state.json (if present)
+- cron status snapshot (captured via `openclaw cron list` → persisted to a local text file by a small wrapper script)
+- System metrics snapshot (on pc, a light shell wrapper can write a JSON or text file with disk/memory/CPU info before invoking the sim)
+
+Define an input bundle:
+
+OpsLogBundle {
+  "ts_collected": "ISO8601",
+  "sentinel_log_tail": "last N lines as string",
+  "sentinel_state": { ... },
+  "events_tail": [ ... ],          // last N lines parsed from events.jsonl
+  "ops_state": { ... },            // if available
+  "cron_status": "text snapshot of openclaw cron list",
+  "system_metrics": {
+    "disk": { "percent_used": 0.0, "notes": "" },
+    "memory": { "percent_used": 0.0, "notes": "" },
+    "cpu": { "load_avg": [], "notes": "" }
+  },
+  "recent_errors": [
+    // recent non-OK events or log lines extracted by wrapper script
+  ]
+}
+
+The wrapper script on pc should:
+1) Collect these pieces from local files / shell commands.
+2) Build an OpsLogBundle JSON.
+3) Pass that bundle to Llama 3.1 as the prompt/context.
+
+SIMULATION TASK (WHAT Llama 3.1 DOES)
+
+Given an OpsLogBundle, Llama should:
+
+1. Reconstruct the current ops picture
+   - What’s running, what recently happened, any notable events or state changes.
+
+2. Summarize operational health
+   - Is the system generally stable / slightly noisy / concerning?
+   - Distinguish between expected minor warnings vs meaningful changes.
+
+3. Detect anomalies vs normal patterns
+   - Repeated errors, unusual restarts, spikes in failures, weird cron behavior, unusual metrics.
+   - Note both "hard anomalies" (obvious problems) and "soft tensions" (patterns that might become problems later).
+
+4. Analyze causes / contributing factors (hypotheses)
+   - Offer plausible explanations for anomalies or tensions, clearly marked as hypotheses.
+   - Avoid invented certainty; keep uncertainty explicit.
+
+5. Classify overall ops state
+   - Use a simple classification:
+     - "normal"
+     - "watch"
+     - "investigate"
+     - "policy_tension" (e.g., cron design vs reality, noise vs value)
+     - "low_value_task" or "high_value_task" if particular recurring behaviors stand out
+
+6. Highlight watch items
+   - Small, concrete things main no1r should keep an eye on (e.g., "cron job X often erroring but non-critical," "backup rotation approaching threshold").
+
+OUTPUT FORMAT (MANDATORY)
+
+Every run must produce a SimulationReport JSON:
+
+SimulationReport {
+  "simulation_type": "ops_log_digest_v0.1",
+  "timestamp": "ISO8601",
+  "situation": "Short natural language description of the current ops context.",
+  "observed_signals": [
+    "Key signals from logs/metrics/events, bullet-point style text."
+  ],
+  "analysis": "Dense paragraph or two summarizing what is going on operationally.",
+  "anomalies_or_tensions": [
+    "Descriptions of anomalies (restarts/errors) or tensions (noisy cron vs value, etc.)."
+  ],
+  "hypotheses": [
+    "Hypothesis 1 with explicit uncertainty.",
+    "Hypothesis 2 with explicit uncertainty."
+  ],
+  "uncertainties": [
+    "What is unclear or requires more data."
+  ],
+  "recommended_classification": "normal | watch | investigate | policy_tension | low_value_task | high_value_task | candidate",
+  "watch_items": [
+    "Concise things main no1r should keep an eye on (jobs, files, metrics, patterns)."
+  ],
+  "notes_for_main_no1r": "Targeted notes, including any questions or suggestions for where main no1r might focus.",
+  "confidence": "low | medium | high",
+  "safety_note": "Simulation only. No external actions taken."
+}
+
+The wrapper on pc should:
+- validate that the output is valid JSON (or parseable),
+- save each run to e.g. simulations/ops_log_digest/YYYY-MM-DD/HHMM_report.json.
+
+SUGGESTED DIRECTORY STRUCTURE ON PC
+
+Inside the repo or under a local simulations/ folder, e.g.:
+
+simulations/
+  ops_log_digest/
+    input_bundles/
+      2026-03-11T23-00Z_bundle.json
+      ...
+    reports/
+      2026-03-11T23-00Z_report.json
+      ...
+
+SCHEDULING / CRON (ON PC)
+
+On pc, under your user:
+
+1) Create a small script, e.g. scripts/run_ops_log_digest_sim.sh:
+
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$HOME/.openclaw/workspace"   # adjust if different on pc
+cd "$ROOT"
+
+TS="$(date -u +%Y-%m-%dT%H-%MZ)"
+BUNDLE_DIR="$ROOT/simulations/ops_log_digest/input_bundles"
+REPORT_DIR="$ROOT/simulations/ops_log_digest/reports"
+mkdir -p "$BUNDLE_DIR" "$REPORT_DIR"
+
+BUNDLE_FILE="$BUNDLE_DIR/${TS}_bundle.json"
+REPORT_FILE="$REPORT_DIR/${TS}_report.json"
+
+# 1) Collect local data into OpsLogBundle (you can implement this in Python/Node/bash)
+python3 scripts/build_ops_log_bundle.py > "$BUNDLE_FILE"
+
+# 2) Call Llama 3.1 with BUNDLE_FILE as input and write to REPORT_FILE
+# (pseudo-command; adapt to your local Llama/ollama tooling)
+ollama run llama3.1 "
+You are no1r-pc, a worker/analyst. Given this OpsLogBundle JSON, produce a SimulationReport JSON as specified.
+
+OpsLogBundle:
+$(cat "$BUNDLE_FILE")
+" > "$REPORT_FILE.tmp"
+
+# Optionally validate JSON and move into place
+mv "$REPORT_FILE.tmp" "$REPORT_FILE"
+
+2) Add a daily cron on pc (user-level):
+
+0 23 * * * /home/<youruser>/.openclaw/workspace/scripts/run_ops_log_digest_sim.sh
+
+(Replace <youruser> and paths as needed.)
+
+USAGE BY MAIN NO1R
+
+- no1r-pc runs this daily.
+- Main no1r can, when asked for an ops overview, read the latest *_report.json from simulations/ops_log_digest/reports/ on pc (you can paste or summarize them) and incorporate the findings into ops briefs and patterns.
+
+BEHAVIORAL RULES FOR LLAMA 3.1
+
+- Do not suggest direct actions like "restart service X" or "modify config Y" as commands.
+- You can say "this looks like it may warrant investigation of X" but always label it as advisory.
+- Keep uncertainty explicit; favor "possible cause" over "root cause" unless logs are extremely clear.
+- Prefer concise, high-signal notes over long prose.
+
+END OPS LOG DIGEST SPEC v0.1
