@@ -278,3 +278,10 @@
 [2026-03-11T00:40:21.528142] Testing default model...
 [2026-03-11T00:40:25.519347]   ✓ Default model: Default: openai-codex/gpt-5.1, Fallbacks: 4
 [2026-03-11T00:40:25.528346] Health check complete. Failures: False
+[2026-03-11T14:40:21.789595] ==================================================
+[2026-03-11T14:40:21.789739] Model Health Check Started
+[2026-03-11T14:40:21.789781] Testing gateway connectivity...
+[2026-03-11T14:40:21.810481]   ✓ Gateway: Gateway OK (HTTP 200)
+[2026-03-11T14:40:21.810600] Testing default model...
+[2026-03-11T14:40:25.697856]   ✓ Default model: Default: openai-codex/gpt-5.1, Fallbacks: 4
+[2026-03-11T14:40:25.698424] Health check complete. Failures: False
