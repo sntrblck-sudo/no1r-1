@@ -1818,3 +1818,4 @@ See system logs and 'systemctl status openclaw-gateway.service' for details.
 [2026-03-12T12:00:55.807411Z] Alive: loop 2832
 [2026-03-12T12:00:55.897186Z] Cost: $0.0182 / $0.39 | Sessions: 0
 [2026-03-12T12:05:55.955804Z] Heartbeat: gateway=primary latency=4.475831985473633ms failures=0 restarts=0
+EVENT {"ts": "2026-03-12T12:42:54.062583Z", "type": "health_pulse", "summary": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems"}
