@@ -43,12 +43,7 @@ No extra prose or markdown—JSON only.
 EOF
 )
 
-if command -v ollama >/dev/null 2>&1; then
-  ollama run llama3.1 "$PROMPT" > "$TMP_REPORT"
-else
-  echo "ollama not found; cannot run Llama 3.1" >&2
-  exit 1
-fi
+openclaw run --model qwen-portal/coder-model --no-stream "$PROMPT" > "$TMP_REPORT"
 
 python3 - "$TMP_REPORT" "$REPORT_FILE" <<'PY'
 import json, sys, pathlib
@@ -73,7 +68,7 @@ if git diff --cached --quiet; then
   git reset HEAD "$BUNDLE_FILE" "$REPORT_FILE" >/dev/null 2>&1 || true
 else
   git commit -m "ops_log_digest: add report $TS" >/dev/null 2>&1 || true
-  if ! git push origin master >/dev/null 2>&1; then
+  if ! git push origin master --quiet; then
     echo "[warn] git push failed (check credentials)" >&2
   fi
 fi
