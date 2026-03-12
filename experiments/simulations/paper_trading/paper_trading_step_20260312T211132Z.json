@@ -1,0 +1,102 @@
+{
+  "ts": "2026-03-12T21:11:32.521898Z",
+  "trades": [
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.68,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.68,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.56,
+      "judgment": {
+        "score": 0.56,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.42,
+      "judgment": {
+        "score": 0.42,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.91,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.91,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.94,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.94,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.84,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.84,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.72,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.72,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.68,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.68,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    }
+  ],
+  "balance_start": 0.23
+}
