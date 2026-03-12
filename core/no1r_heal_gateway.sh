@@ -26,7 +26,7 @@ fi
 # Log intent
 echo "$(date -u +%FT%TZ) - heal requested: restarting openclaw-gateway.service" >> "$LOG"
 
-# Determine service owner (if openclaw-gateway process exists)
+# Determine service owner and main PID (if openclaw-gateway process exists)
 PID=$(pgrep -f openclaw-gateway | head -n1 || true)
 SERVICE_USER=""
 if [ -n "$PID" ] && [ -d "/proc/$PID" ]; then
@@ -36,7 +36,7 @@ if [ -z "$SERVICE_USER" ]; then
   SERVICE_USER="sntrblck"
 fi
 
-# Try user-level systemd as the service owner, then fallback to system-level systemd
+# 1) Try user-level systemd as the service owner (best-effort)
 if sudo -u "$SERVICE_USER" systemctl --user restart openclaw-gateway.service 2>/dev/null; then
   sudo -u "$SERVICE_USER" systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
   echo "$(date -u +%FT%TZ) - heal success (user systemd as $SERVICE_USER)" >> "$LOG"
@@ -44,14 +44,34 @@ if sudo -u "$SERVICE_USER" systemctl --user restart openclaw-gateway.service 2>/
   exit 0
 fi
 
+# 2) Try system-level systemd as a fallback
 if /bin/systemctl restart openclaw-gateway.service 2>/dev/null; then
   /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
   echo "$(date -u +%FT%TZ) - heal success (systemd)" >> "$LOG"
   date +%s > "$RATEFILE"
   exit 0
-else
-  echo "$(date -u +%FT%TZ) - heal failed" >> "$LOG"
-  sudo -u "$SERVICE_USER" systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
-  /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
-  exit 4
 fi
+
+# 3) Fallback: signal the running process (kill TERM) and rely on user systemd to restart it
+if [ -n "$PID" ]; then
+  echo "$(date -u +%FT%TZ) - fallback: sending TERM to PID $PID" >> "$LOG"
+  kill -TERM "$PID" >> "$LOG" 2>&1 || true
+  sleep 2
+  # Check if a new PID is present
+  NEWPID=$(pgrep -f openclaw-gateway | head -n1 || true)
+  if [ -n "$NEWPID" ] && [ "$NEWPID" != "$PID" ]; then
+    echo "$(date -u +%FT%TZ) - heal success (process restarted as PID $NEWPID)" >> "$LOG"
+    date +%s > "$RATEFILE"
+    exit 0
+  else
+    echo "$(date -u +%FT%TZ) - fallback heal failed (process did not restart)" >> "$LOG"
+  fi
+else
+  echo "$(date -u +%FT%TZ) - no PID found for openclaw-gateway, cannot fallback to kill" >> "$LOG"
+fi
+
+# If we reach here, heal failed
+echo "$(date -u +%FT%TZ) - heal failed" >> "$LOG"
+sudo -u "$SERVICE_USER" systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+/bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+exit 4
