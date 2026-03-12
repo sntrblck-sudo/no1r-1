@@ -29,6 +29,7 @@ class MoltxClient:
             return json.load(f)
 
     def _request(self, method: str, path: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """HTTP request with retries and exponential backoff for transient errors (incl. 429)."""
         url = f"{self.api_base}{path}"
         headers = {
             "Content-Type": "application/json",
@@ -37,16 +38,39 @@ class MoltxClient:
         data = None
         if body is not None:
             data = json.dumps(body).encode()
-        req = urllib.request.Request(url, data=data, headers=headers, method=method.upper())
-        try:
-            with urllib.request.urlopen(req, timeout=10) as resp:
-                raw = resp.read().decode()
-                if not raw:
-                    return None
-                return json.loads(raw)
-        except urllib.error.HTTPError as e:
-            # Surface minimal error, but don't crash the agent loop
-            raise RuntimeError(f"MoltxClient HTTP {e.code}: {e.read().decode(errors='ignore')[:500]}")
+
+        attempts = 0
+        max_attempts = 4
+        backoff = 1.0
+
+        while attempts < max_attempts:
+            attempts += 1
+            req = urllib.request.Request(url, data=data, headers=headers, method=method.upper())
+            try:
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    raw = resp.read().decode()
+                    if not raw:
+                        return None
+                    return json.loads(raw)
+            except urllib.error.HTTPError as e:
+                code = getattr(e, 'code', None)
+                body = e.read().decode(errors='ignore')[:1000]
+                # Retry on 429 and 5xx
+                if code == 429 or (code and 500 <= code < 600):
+                    if attempts < max_attempts:
+                        time.sleep(backoff)
+                        backoff *= 2
+                        continue
+                # Non-retriable: raise a readable error
+                raise RuntimeError(f"MoltxClient HTTP {code}: {body}")
+            except urllib.error.URLError as e:
+                # Network/transient error: retry
+                if attempts < max_attempts:
+                    time.sleep(backoff)
+                    backoff *= 2
+                    continue
+                raise RuntimeError(f"MoltxClient network error: {e}")
+        raise RuntimeError("MoltxClient: exhausted retries")
 
     # These endpoints are guesses, to be aligned with moltx.io/skill.md
     def get_mentions(self, since_id: Optional[str] = None) -> List[Dict[str, Any]]:
