@@ -26,10 +26,20 @@ fi
 # Log intent
 echo "$(date -u +%FT%TZ) - heal requested: restarting openclaw-gateway.service" >> "$LOG"
 
-# Try user-level systemd first (systemctl --user), then fallback to system-level systemctl
-if /bin/systemctl --user restart openclaw-gateway.service 2>/dev/null; then
-  /bin/systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
-  echo "$(date -u +%FT%TZ) - heal success (user systemd)" >> "$LOG"
+# Determine service owner (if openclaw-gateway process exists)
+PID=$(pgrep -f openclaw-gateway | head -n1 || true)
+SERVICE_USER=""
+if [ -n "$PID" ] && [ -d "/proc/$PID" ]; then
+  SERVICE_USER=$(stat -c '%U' /proc/$PID || true)
+fi
+if [ -z "$SERVICE_USER" ]; then
+  SERVICE_USER="sntrblck"
+fi
+
+# Try user-level systemd as the service owner, then fallback to system-level systemd
+if sudo -u "$SERVICE_USER" systemctl --user restart openclaw-gateway.service 2>/dev/null; then
+  sudo -u "$SERVICE_USER" systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+  echo "$(date -u +%FT%TZ) - heal success (user systemd as $SERVICE_USER)" >> "$LOG"
   date +%s > "$RATEFILE"
   exit 0
 fi
@@ -41,7 +51,7 @@ if /bin/systemctl restart openclaw-gateway.service 2>/dev/null; then
   exit 0
 else
   echo "$(date -u +%FT%TZ) - heal failed" >> "$LOG"
-  /bin/systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+  sudo -u "$SERVICE_USER" systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
   /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
   exit 4
 fi
