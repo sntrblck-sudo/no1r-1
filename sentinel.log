@@ -1863,3 +1863,5 @@ EVENT {"ts": "2026-03-12T18:38:04.263076Z", "type": "health_pulse", "summary": "
 EVENT {"ts": "2026-03-12T18:56:58.375053Z", "type": "health_pulse", "summary": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems"}
 [2026-03-12T19:00:59.607738Z] Alive: loop 2916
 [2026-03-12T19:00:59.741470Z] Cost: $0.0182 / $0.35 | Sessions: 0
+[2026-03-12T19:05:59.816543Z] Heartbeat: gateway=primary latency=2.7611255645751953ms failures=0 restarts=0
+EVENT {"ts": "2026-03-12T19:13:27.501675Z", "type": "health_pulse", "summary": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems"}

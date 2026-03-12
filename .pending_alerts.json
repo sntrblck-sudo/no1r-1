@@ -2,11 +2,6 @@
   {
     "type": "health_pulse",
     "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
-    "timestamp": "2026-03-12T13:20:47.607318Z"
-  },
-  {
-    "type": "health_pulse",
-    "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
     "timestamp": "2026-03-12T13:36:31.712647Z"
   },
   {
@@ -98,5 +93,10 @@
     "type": "health_pulse",
     "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
     "timestamp": "2026-03-12T18:56:58.375392Z"
+  },
+  {
+    "type": "health_pulse",
+    "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
+    "timestamp": "2026-03-12T19:13:27.502024Z"
   }
 ]
