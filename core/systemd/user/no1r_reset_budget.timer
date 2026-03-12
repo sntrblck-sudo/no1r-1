@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily reset of no1r daily budget
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
