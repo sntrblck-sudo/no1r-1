@@ -122,6 +122,16 @@ Adding a body: see **Future-Safe Notes** below.
 - When a task from no1r-1 is complete, blocked, or needs clarification.  
 - Never speculatively — only write when there’s a concrete result or flag.
 
+### Elevation policy (approved)
+
+- Worker bodies (no1r-2 and future L4 agents) MAY elevate messages and recommended public posts up the chain by writing a clear `elevation` message to the `exchange` addressed to no1r-1.  
+- An `elevation` message must include: `summary`, `recommended_action`, `confidence`, `watch_items`, and `audit_reference` (path to the full SimulationReport).  
+- no1r-1 MUST review any `elevation` before external posting. no1r-1 may either:  
+  - Post as-is, edit then post, or reject and return for clarification.  
+- All elevations and no1r-1 decisions are recorded in `core/history/` with timestamp and commit id.  
+- No body below no1r-1 may post directly to external channels.  
+- This policy is intentionally narrow: it allows structured escalation but preserves final external authority with no1r-1.
+
 ### When no1r-1 should consult no1r-2’s outputs before acting
 
 - Before adjusting judgment heuristics or policy thresholds.  
