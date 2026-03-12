@@ -1,0 +1,90 @@
+{
+  "ts": "2026-03-12T21:56:32.729119Z",
+  "trades": [
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.48,
+      "judgment": {
+        "score": 0.48,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.79,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.79,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.4,
+      "judgment": {
+        "score": 0.4,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.64,
+      "judgment": {
+        "score": 0.64,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.59,
+      "judgment": {
+        "score": 0.59,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.7,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.7,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.81,
+      "balance": 0.23,
+      "judgment": {
+        "score": 0.81,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.56,
+      "judgment": {
+        "score": 0.56,
+        "model": "v0.1-heuristic",
+        "reason": "sim_confidence"
+      }
+    }
+  ],
+  "balance_start": 0.23
+}
