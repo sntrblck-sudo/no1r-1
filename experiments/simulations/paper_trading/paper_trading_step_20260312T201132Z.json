@@ -1,0 +1,58 @@
+{
+  "ts": "2026-03-12T20:11:32.138381Z",
+  "trades": [
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.74,
+      "balance": 0.23
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.57
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.92,
+      "balance": 0.23
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.69,
+      "balance": 0.23
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.68,
+      "balance": 0.23
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.52
+    },
+    {
+      "action": "skip_low_conf",
+      "confidence": 0.47
+    },
+    {
+      "action": "hold",
+      "amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "confidence": 0.83,
+      "balance": 0.23
+    }
+  ],
+  "balance_start": 0.23
+}
