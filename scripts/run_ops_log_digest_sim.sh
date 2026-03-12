@@ -43,7 +43,7 @@ No extra prose or markdown—JSON only.
 EOF
 )
 
-openclaw run --model qwen-portal/coder-model --no-stream "$PROMPT" > "$TMP_REPORT"
+openclaw agent --message "$PROMPT" > "$TMP_REPORT" 2>&1
 
 python3 - "$TMP_REPORT" "$REPORT_FILE" <<'PY'
 import json, sys, pathlib
