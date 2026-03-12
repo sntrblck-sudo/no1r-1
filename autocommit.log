@@ -2985,3 +2985,4 @@ IndentationError: unexpected indent
 [2026-03-12T18:55:53.040674Z] Committed: model-health-state.json, autocommit.log, memory/2026-03-12.md, sentinel_state.json
 [2026-03-12T19:05:53.179219Z] Committed: model-health-state.json, .pending_alerts.json, autocommit.log, sentinel.log, sentinel_state.json
 [2026-03-12T19:15:53.399129Z] Committed: model-health-state.json, .pending_alerts.json, autocommit.log, sentinel.log, sentinel_state.json
+[2026-03-12T19:25:53.646302Z] Committed: model-health-state.json, autocommit.log, sentinel_state.json, core/systemd/user/no1r_reset_budget.service, scripts/reset_daily_budget.sh
