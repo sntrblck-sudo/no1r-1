@@ -33,5 +33,10 @@
     "type": "health_pulse",
     "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
     "timestamp": "2026-03-12T13:36:31.712647Z"
+  },
+  {
+    "type": "health_pulse",
+    "message": "sentinel: failures=0 restarts=0 cost=$0.0182 | model=None heal_blocked=None | gateway: unknown latency=Nonems",
+    "timestamp": "2026-03-12T13:51:59.847099Z"
   }
 ]
