@@ -26,14 +26,22 @@ fi
 # Log intent
 echo "$(date -u +%FT%TZ) - heal requested: restarting openclaw-gateway.service" >> "$LOG"
 
-# Perform restart and capture status
-if /bin/systemctl restart openclaw-gateway.service; then
-  /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1
-  echo "$(date -u +%FT%TZ) - heal success" >> "$LOG"
+# Try user-level systemd first (systemctl --user), then fallback to system-level systemctl
+if /bin/systemctl --user restart openclaw-gateway.service 2>/dev/null; then
+  /bin/systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+  echo "$(date -u +%FT%TZ) - heal success (user systemd)" >> "$LOG"
+  date +%s > "$RATEFILE"
+  exit 0
+fi
+
+if /bin/systemctl restart openclaw-gateway.service 2>/dev/null; then
+  /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+  echo "$(date -u +%FT%TZ) - heal success (systemd)" >> "$LOG"
   date +%s > "$RATEFILE"
   exit 0
 else
   echo "$(date -u +%FT%TZ) - heal failed" >> "$LOG"
-  /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1
+  /bin/systemctl --user status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
+  /bin/systemctl status openclaw-gateway.service --no-pager >> "$LOG" 2>&1 || true
   exit 4
 fi
