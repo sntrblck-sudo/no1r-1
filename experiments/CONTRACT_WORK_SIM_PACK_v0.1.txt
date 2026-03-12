@@ -1,0 +1,223 @@
+╔══════════════════════════════════════════════════════════════════╗
+║ CONTRACT_WORK_SIM_PACK_v0.1                                      ║
+║ Synthetic Contract Work Simulation · no1r-2                      ║
+║ path: experiments/CONTRACT_WORK_SIM_PACK_v0.1.txt                ║
+║ status: simulation-only · no real clients · no real money        ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. PURPOSE & ROLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This simulation trains no1r-2's contract-work judgment using fictional job briefs.
+No real clients, payments, or external calls.
+
+no1r-2's role in this sim: analyst and scoping assistant. It evaluates synthetic jobs,
+decides whether to accept/decline/defer, produces a scoped deliverable summary,
+self-critiques, and emits a structured JSON report.
+
+The goal is to improve three core capacities:
+
+(a) task selection — energy vs. reward vs. risk
+(b) scoping discipline — clear assumptions, bounded deliverables
+(c) honest self-assessment — calibrated uncertainty, no puffery
+
+All output is append-only simulation data. Nothing executes. The main agent (no1r-1)
+reviews results and may update judgment heuristics from patterns observed across
+batches.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. INPUT SCHEMA — SyntheticJob
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  "job_id": string,          // e.g. "job_2025_001"
+  "task_type": string,      // e.g. "research", "writing",
+                             // "data_analysis", "code_review",
+                             // "consulting", "summarisation"
+  "description": string,    // raw brief as given by fake client
+  "deadline": string,       // ISO 8601 or relative ("3 days")
+  "complexity": "low"|"med"|"high",
+  "reward_fake_usd": number,       // fictional payment amount
+  "clarity_level": "clear"|"partial"|"vague",
+  "risk_tags": string[],    // e.g. ["scope_creep", "legal_adj",
+                             // "subjective_output", "rushed",
+                             // "underspecified", "reputational"]
+  "expected_output": string,       // what the fake client wants
+  "client_type": string,    // e.g. "startup", "solo_founder",
+                             // "enterprise", "unknown"
+  "prior_context": string|null,    // any prior sim relationship / history
+  "batch_id": string               // links to the parent simulation run
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. WORKER PROCESS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For each SyntheticJob, no1r-2 executes the following steps in order. No step may be
+skipped. Each step produces a field in the output.
+
+STEP 1 — INTAKE & FIRST READ
+- Read description and expected_output carefully.
+- Flag any immediate clarity issues.
+- Note what is explicitly stated vs. assumed.
+- Do not infer generously — surface gaps.
+
+STEP 2 — DECISION: ACCEPT / DECLINE / DEFER
+- Apply heuristics from §5.
+- Produce:
+  - decision: one of accept | decline | defer
+  - decision_reason: 1–3 sentences, specific, no padding
+  - blocking_issues: list of what would need to change for a decline to
+    become accept, or defer to become accept
+
+STEP 3 — SCOPE (accepted/deferred jobs only)
+- Define:
+  - assumptions: what no1r-2 is treating as true to proceed
+  - out_of_scope: explicit list of what is NOT included
+  - estimated_steps: high-level breakdown of work phases
+  - deliverable_format: what the output would look like
+
+STEP 4 — SIMULATED DELIVERABLE SUMMARY
+- Produce a 3–6 sentence summary of what the deliverable would contain if the
+  job were real.
+- Not the full content — a precise description of its structure, key findings
+  or sections, and any material caveats.
+- Be honest about what would be uncertain or incomplete given the brief.
+
+STEP 5 — SELF-CRITIQUE
+- Score the simulated work using the rubric:
+  - clarity: Was the output easy to follow?
+  - completeness: Did it cover what the brief asked?
+  - honesty: Were uncertainties named, not hidden?
+  - usefulness: Would a real client actually gain from this?
+- Each scored 0–10.
+- Also write a critique note (2–3 sentences) identifying the weakest point
+  and what would fix it.
+
+STEP 6 — EMIT SimulationReport (see §4)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. OUTPUT SCHEMA — SimulationReport
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  "simulation_type": "contract_work_sim",
+  "schema_version": "0.1",
+  "timestamp": string,      // ISO 8601
+  "batch_id": string,
+  "job_id": string,
+
+  // ── top-level meta (mirrors ops_log_digest pattern)
+  "situation": string,      // 1–2 sentence neutral description of the job
+  "analysis": string,       // no1r-2's read of the job's real dynamics
+  "hypotheses": string[],   // what no1r-2 thinks is actually going on
+                             // (e.g. "client hasn't scoped this themselves")
+  "uncertainties": string[],// named unknowns that affect the outcome
+  "recommended_classification": string, // see §5 labels
+  "watch_items": string[],  // flags for no1r-1 to track across batches
+  "notes_for_main_no1r": string, // anything the reviewing agent should know
+  "confidence": "low"|"med"|"high",
+  "safety_note": string,    // explicit restatement that this is simulated
+
+  // ── job outcome (nested)
+  "job_outcome": {
+    "decision": "accept"|"decline"|"defer",
+    "decision_reason": string,
+    "blocking_issues": string[],
+
+    // scope (null if declined without scoping)
+    "scope": {
+      "assumptions": string[],
+      "out_of_scope": string[],
+      "estimated_steps": string[],
+      "deliverable_format": string
+    } | null,
+
+    "deliverable_summary": string,   // step 4 output
+
+    "self_score": {
+      "clarity": number,      // 0–10
+      "completeness": number,
+      "honesty": number,
+      "usefulness": number,
+      "critique_note": string
+    },
+
+    "fake_payment_record": {
+      "job_id": string,
+      "reward_fake_usd": number,
+      "status": "paid_simulated"|"unpaid_simulated"|"deferred_simulated"
+    },
+
+    "outcome_tags": string[] // e.g. ["bad_brief", "scope_creep_risk",
+                              // "misaligned_reward", "good_fit",
+                              // "policy_tension", "underpriced"]
+  }
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. CLASSIFICATION & HEURISTICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CLASSIFICATION LABELS (use in recommended_classification)
+
+- high_value_task      — clear brief, fair pay, low risk, good fit
+- low_value_task       — clear but not worth the effort relative to cost
+- underpriced          — good brief, acceptable risk, reward too low
+- unclear_scope        — brief lacks enough info to scope confidently
+- scope_creep_risk     — brief implies expanding requirements mid-job
+- policy_tension       — job asks for something at the edge of role
+- bad_brief            — so vague or contradictory as to be unusable
+- high_risk_low_reward — risk tags are serious, reward doesn't justify
+- good_learning_task   — low stakes, good for building judgment muscle
+- deferred_pending_info— needs clarification before a real decision
+
+DECISION HEURISTICS
+
+DECLINE when (any of):
+- clarity_level == "vague" AND reward_fake_usd < 200
+- risk_tags includes "legal_adj" AND clarity_level != "clear"
+- expected_output is undefined or contradictory
+- complexity == "high" AND clarity_level == "vague"
+- reward does not cover estimated scope at any reasonable rate
+
+ACCEPT when (all of):
+- clarity_level == "clear" (or "partial" with low risk_tags)
+- reward_fake_usd is proportional to complexity and estimated_steps
+- risk_tags are low/acceptable (no serious legal or reputational flags)
+- task_type matches strengths (e.g. research, analysis, docs, not custody)
+
+DEFER when:
+- brief is promising but missing 1–3 critical pieces of information
+- the decision hinges on clarifications (scope, timelines, success criteria)
+- there is potential policy_tension that needs Principal/Operator input
+
+In all cases, decision_reason and blocking_issues must be explicit and concrete.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. SAFETY & BEHAVIOR RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- All jobs are synthetic. No real clients, no real identities.
+- All payments are synthetic. No wallets, no on-chain activity.
+- No external API calls. All analysis is local and text-based.
+- No configuration changes, no autonomous actions.
+- Output is analysis and simulated judgment only.
+- Money-related fields (reward_fake_usd, fake_payment_record) are
+  training signals, not real value.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. SCHEDULING SUGGESTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Recommended cadence: **weekly batch** of 2–10 SyntheticJob entries.
+- Each batch:
+  - shares a batch_id,
+  - is processed sequentially by no1r-2,
+  - emits one SimulationReport per job.
+- Batches can be triggered manually at first, then wired into a weekly
+  simulation loop once stable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END CONTRACT_WORK_SIM_PACK_v0.1
