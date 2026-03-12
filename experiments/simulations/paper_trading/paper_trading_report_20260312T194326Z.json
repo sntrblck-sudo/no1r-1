@@ -1,0 +1,69 @@
+{
+  "start": "2026-03-12T19:43:26.194092Z",
+  "days": [
+    {
+      "day": 1,
+      "action": "hold",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 2,
+      "action": "sell",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 3,
+      "action": "hold",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 4,
+      "action": "buy",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 5,
+      "action": "buy",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 6,
+      "action": "hold",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    },
+    {
+      "day": 7,
+      "action": "buy",
+      "trade_amount": 0.0,
+      "cost": 0,
+      "revenue": 0,
+      "note": "hold",
+      "balance": 0.23
+    }
+  ],
+  "start_balance": 0.22882446214336633
+}
