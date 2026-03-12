@@ -1,0 +1,8 @@
+[2026-02-26 20:34:41] [INFO] ==================================================
+[2026-02-26 20:34:41] [INFO] SENTINEL STARTING
+[2026-02-26 20:34:41] [INFO] Experiment directory: /home/sntrblck/.openclaw/workspace/experiments/sentinel
+[2026-02-26 20:34:41] [INFO] Started at: 2026-02-26 20:34:41.587029
+[2026-02-26 20:34:41] [INFO] ==================================================
+[2026-02-26 20:34:41] [INFO] Heartbeat: gateway=False, cost=$0.0000, mem=14.6MB, disk=5.4GB
+[2026-02-26 20:34:41] [WARN] Insufficient data for learning update
+[2026-02-26 20:34:41] [INFO] Daily report generated

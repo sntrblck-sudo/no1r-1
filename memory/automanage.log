@@ -1,0 +1,219 @@
+[2026-02-26 20:50:46] Automanage agent with learning started
+[2026-02-26 20:50:47] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:50:47] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:50:47] Dashboard down and restart failed
+[2026-02-26 20:50:47] Twitter: Check complete (no new updates)
+[2026-02-26 20:50:47] ALERT: ⚠️ Dashboard is unreachable. Attempting recovery.
+[2026-02-26 20:51:17] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:51:17] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:51:17] Dashboard down and restart failed
+[2026-02-26 20:51:47] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:51:47] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:51:47] Dashboard down and restart failed
+[2026-02-26 20:52:17] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:52:17] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:52:17] Dashboard down and restart failed
+[2026-02-26 20:52:47] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:52:47] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:52:47] Dashboard down and restart failed
+[2026-02-26 20:53:17] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:53:17] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:53:17] Dashboard down and restart failed
+[2026-02-26 20:53:47] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:53:47] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:53:47] Dashboard down and restart failed
+[2026-02-26 20:54:18] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:54:18] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:54:18] Dashboard down and restart failed
+[2026-02-26 20:54:48] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:54:48] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:54:48] Dashboard down and restart failed
+[2026-02-26 20:55:18] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:55:18] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:55:18] Dashboard down and restart failed
+[2026-02-26 20:55:48] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:55:48] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:55:48] Dashboard down and restart failed
+[2026-02-26 20:56:18] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:56:18] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:56:18] Dashboard down and restart failed
+[2026-02-26 20:56:48] Outcome: dashboard_restart via pkill failed (duration: 0.2s)
+[2026-02-26 20:56:48] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:56:48] Dashboard down and restart failed
+[2026-02-26 20:57:19] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:57:19] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:57:19] Dashboard down and restart failed
+[2026-02-26 20:57:49] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:57:49] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:57:49] Dashboard down and restart failed
+[2026-02-26 20:58:19] Outcome: dashboard_restart via pkill failed (duration: 0.2s)
+[2026-02-26 20:58:19] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:58:19] Dashboard down and restart failed
+[2026-02-26 20:58:49] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:58:49] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:58:49] Dashboard down and restart failed
+[2026-02-26 20:59:20] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 20:59:20] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:59:20] Dashboard down and restart failed
+[2026-02-26 20:59:50] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 20:59:50] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 20:59:50] Dashboard down and restart failed
+[2026-02-26 21:00:20] Outcome: dashboard_restart via pkill failed (duration: 0.3s)
+[2026-02-26 21:00:20] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:00:20] Dashboard down and restart failed
+[2026-02-26 21:00:50] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:00:50] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:00:50] Dashboard down and restart failed
+[2026-02-26 21:01:20] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:01:20] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:01:20] Dashboard down and restart failed
+[2026-02-26 21:01:50] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:01:50] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:01:50] Dashboard down and restart failed
+[2026-02-26 21:02:21] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:02:21] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:02:21] Dashboard down and restart failed
+[2026-02-26 21:02:51] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:02:51] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:02:51] Dashboard down and restart failed
+[2026-02-26 21:03:21] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:03:21] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:03:21] Dashboard down and restart failed
+[2026-02-26 21:03:51] Outcome: dashboard_restart via pkill failed (duration: 0.2s)
+[2026-02-26 21:03:51] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:03:51] Dashboard down and restart failed
+[2026-02-26 21:04:21] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:04:21] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:04:21] Dashboard down and restart failed
+[2026-02-26 21:04:52] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:04:52] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:04:52] Dashboard down and restart failed
+[2026-02-26 21:05:22] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:05:22] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:05:22] Dashboard down and restart failed
+[2026-02-26 21:05:52] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:05:52] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:05:52] Dashboard down and restart failed
+[2026-02-26 21:06:22] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:06:22] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:06:22] Dashboard down and restart failed
+[2026-02-26 21:06:52] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:06:52] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:06:52] Dashboard down and restart failed
+[2026-02-26 21:07:22] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:07:22] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:07:22] Dashboard down and restart failed
+[2026-02-26 21:07:52] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:07:52] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:07:52] Dashboard down and restart failed
+[2026-02-26 21:08:22] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:08:22] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:08:22] Dashboard down and restart failed
+[2026-02-26 21:08:52] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:08:52] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:08:52] Dashboard down and restart failed
+[2026-02-26 21:09:23] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:09:23] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:09:23] Dashboard down and restart failed
+[2026-02-26 21:09:53] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:09:53] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:09:53] Dashboard down and restart failed
+[2026-02-26 21:10:23] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:10:23] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:10:23] Dashboard down and restart failed
+[2026-02-26 21:10:53] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:10:53] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:10:53] Dashboard down and restart failed
+[2026-02-26 21:11:23] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:11:23] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:11:23] Dashboard down and restart failed
+[2026-02-26 21:11:53] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:11:53] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:11:53] Dashboard down and restart failed
+[2026-02-26 21:12:23] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:12:23] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:12:23] Dashboard down and restart failed
+[2026-02-26 21:12:54] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:12:54] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:12:54] Dashboard down and restart failed
+[2026-02-26 21:13:24] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:13:24] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:13:24] Dashboard down and restart failed
+[2026-02-26 21:13:54] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:13:54] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:13:54] Dashboard down and restart failed
+[2026-02-26 21:14:24] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:14:24] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:14:24] Dashboard down and restart failed
+[2026-02-26 21:14:54] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:14:54] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:14:54] Dashboard down and restart failed
+[2026-02-26 21:15:24] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:15:24] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:15:24] Dashboard down and restart failed
+[2026-02-26 21:15:54] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:15:54] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:15:54] Dashboard down and restart failed
+[2026-02-26 21:16:25] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:16:25] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:16:25] Dashboard down and restart failed
+[2026-02-26 21:16:55] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:16:55] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:16:55] Dashboard down and restart failed
+[2026-02-26 21:17:25] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:17:25] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:17:25] Dashboard down and restart failed
+[2026-02-26 21:17:55] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:17:55] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:17:55] Dashboard down and restart failed
+[2026-02-26 21:18:25] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:18:25] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:18:25] Dashboard down and restart failed
+[2026-02-26 21:18:55] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:18:55] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:18:55] Dashboard down and restart failed
+[2026-02-26 21:19:25] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:19:25] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:19:25] Dashboard down and restart failed
+[2026-02-26 21:19:56] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:19:56] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:19:56] Dashboard down and restart failed
+[2026-02-26 21:20:26] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:20:26] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:20:26] Dashboard down and restart failed
+[2026-02-26 21:20:56] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:20:56] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:20:56] Dashboard down and restart failed
+[2026-02-26 21:21:26] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:21:26] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:21:26] Dashboard down and restart failed
+[2026-02-26 21:21:56] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:21:56] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:21:56] Dashboard down and restart failed
+[2026-02-26 21:22:26] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:22:26] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:22:26] Dashboard down and restart failed
+[2026-02-26 21:22:57] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:22:57] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:22:57] Dashboard down and restart failed
+[2026-02-26 21:23:27] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:23:27] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:23:27] Dashboard down and restart failed
+[2026-02-26 21:23:57] Outcome: dashboard_restart via pkill failed (duration: 0.1s)
+[2026-02-26 21:23:57] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:23:57] Dashboard down and restart failed
+[2026-02-26 21:24:27] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:24:27] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:24:27] Dashboard down and restart failed
+[2026-02-26 21:24:57] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:24:57] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:24:57] Dashboard down and restart failed
+[2026-02-26 21:25:27] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:25:27] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:25:27] Dashboard down and restart failed
+[2026-02-26 21:25:58] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:25:58] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:25:58] Dashboard down and restart failed
+[2026-02-26 21:26:28] Outcome: dashboard_restart via pkill failed (duration: 0.0s)
+[2026-02-26 21:26:28] Dashboard restart error: Command '['pkill', '-f', 'dashboard_manager.py']' returned non-zero exit status 1.
+[2026-02-26 21:26:28] Dashboard down and restart failed

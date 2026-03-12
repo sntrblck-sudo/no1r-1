@@ -1,0 +1,23 @@
+{
+  "last_update": 0.0,
+  "success_rates": {
+    "dashboard_restart": {
+      "pkill": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "method_preference": {},
+  "adaptive_thresholds": {
+    "cost": 0.5
+  }
+}

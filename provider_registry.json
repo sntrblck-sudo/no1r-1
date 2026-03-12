@@ -1,0 +1,56 @@
+{
+  "openrouter/openrouter/free": {
+    "name": "OpenRouter Free",
+    "type": "openrouter",
+    "fallback_priority": 1,
+    "cost_per_call": 0.0,
+    "quota_type": "time",
+    "max_tokens": 2000000,
+    "retry_delay": 60
+  },
+  "openrouter/google/gemini-2.0-flash-exp:free": {
+    "name": "Gemini Flash Free",
+    "type": "openrouter",
+    "fallback_priority": 1,
+    "cost_per_call": 0.0,
+    "quota_type": "time",
+    "max_tokens": 2000000,
+    "retry_delay": 60
+  },
+  "openrouter/moonshotai/kimi-k2.5": {
+    "name": "Kimi K2.5",
+    "type": "openrouter",
+    "fallback_priority": 5,
+    "cost_per_call": 0.0001,
+    "quota_type": "token",
+    "max_tokens": 4000000,
+    "retry_delay": 30
+  },
+  "openrouter/anthropic/claude-sonnet-4.6": {
+    "name": "Claude Sonnet 4.6",
+    "type": "openrouter",
+    "fallback_priority": 5,
+    "cost_per_call": 0.0002,
+    "quota_type": "token",
+    "max_tokens": 4000000,
+    "retry_delay": 30
+  },
+  "openrouter/anthropic/claude-3-haiku:free": {
+    "name": "Claude Haiku Free",
+    "type": "openrouter",
+    "fallback_priority": 1,
+    "cost_per_call": 0.0,
+    "quota_type": "time",
+    "max_tokens": 2000000,
+    "retry_delay": 60
+  },
+  "openrouter/anthropic/claude-3-opus:free": {
+    "name": "Claude Opus Free",
+    "type": "openrouter",
+    "fallback_priority": 1,
+    "cost_per_call": 0.0,
+    "quota_type": "time",
+    "max_tokens": 2000000,
+    "retry_delay": 60
+  }
+}
